@@ -17,11 +17,16 @@ public class WebController {
     @Value("${server.port}")
     private String serverPort;
 
+    @Value("${appId}")
+    private String appId;
+
     @RequestMapping
     @ResponseBody
     public String index(){
         String uuid = UUID.randomUUID().toString();
-        logger.info(String.format("[ %s ]-[ %s ]",serverPort,uuid));
-        return String.format("[ %s ]-[ %s ]",serverPort,uuid);
+        String result = String.format("[ %s ]-[ %s ]-[ %s ]",appId,serverPort,uuid);
+//        String result = String.format("[ %s ]-[ %s ]-[ %s ]","001",serverPort,uuid);
+        logger.info(result);
+        return result;
     }
 }

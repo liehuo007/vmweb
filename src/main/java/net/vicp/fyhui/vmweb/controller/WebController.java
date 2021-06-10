@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.lang.management.ManagementFactory;
 import java.util.UUID;
 
 @Controller("/")
@@ -24,8 +25,7 @@ public class WebController {
     @ResponseBody
     public String index(){
         String uuid = UUID.randomUUID().toString();
-        String result = String.format("[ %s ]-[ %s ]-[ %s ]",appId,serverPort,uuid);
-//        String result = String.format("[ %s ]-[ %s ]-[ %s ]","001",serverPort,uuid);
+        String result = String.format("[ %s ]-[ %s ]-[ %s ]-[ %s ]",uuid,ManagementFactory.getRuntimeMXBean().getName(),appId,serverPort);
         logger.info(result);
         return result;
     }

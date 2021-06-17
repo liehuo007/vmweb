@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class ConfigParasmeter {
+public class ProjectParameter {
 
     @Value("${server.port}")
     private String serverPort;

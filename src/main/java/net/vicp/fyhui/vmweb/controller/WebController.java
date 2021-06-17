@@ -1,6 +1,6 @@
 package net.vicp.fyhui.vmweb.controller;
 
-import net.vicp.fyhui.vmweb.config.ConfigParasmeter;
+import net.vicp.fyhui.vmweb.config.ProjectParameter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +17,15 @@ public class WebController {
     private final static Logger logger = LogManager.getLogger();
 
     @Autowired
-    private ConfigParasmeter configParasmeter;
+    private ProjectParameter projectParameter;
 
     @RequestMapping
     @ResponseBody
     public String index(){
         String uuid = UUID.randomUUID().toString();
         String result;
-        if(configParasmeter.isShowAppId()){
-            result = String.format("[ %s ]-[ %s ]-[ %s ]-[ %s ]",uuid,ManagementFactory.getRuntimeMXBean().getName(),configParasmeter.getAppId(),configParasmeter.getServerPort());
+        if(projectParameter.isShowAppId()){
+            result = String.format("[ %s ]-[ %s ]-[ %s ]-[ %s ]",uuid,ManagementFactory.getRuntimeMXBean().getName(), projectParameter.getAppId(), projectParameter.getServerPort());
         } else {
             result = String.format("[ %s ]-[ %s ]",uuid,ManagementFactory.getRuntimeMXBean().getName());
         }
